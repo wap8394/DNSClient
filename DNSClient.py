@@ -37,8 +37,8 @@ def query_dns_server(domain, question_type):
 def compare_dns_servers(domainList, question_type):
     resolver = dns.resolver.Resolver()
     for domain_name in domainList:
-        local_ip_address = resolver.resolve(domain_name, question_type)
-        public_ip_address = resolver.resolve(domain_name, question_type)
+        local_ip_address = resolver.query(domain_name, question_type)
+        public_ip_address = resolver.query(domain_name, question_type)
         print('The public ip address is ' + public_ip_address + ' and the local ip address is ' + local_ip_address)
         if local_ip_address != public_ip_address:
             return False
