@@ -23,7 +23,7 @@ def query_local_dns_server(domain, question_type):
 def query_dns_server(domain, question_type):
     resolver = dns.resolver.Resolver()
     resolver.nameservers = [real_name_server]
-    answers = resolver.resolve('google.com', 'A')  # provide the domain and question_type
+    answers = resolver.resolve('example.com', 'A')  # provide the domain and question_type
 
     ip_address = answers[0].to_text()
     print('this is the second function ip address: ' + ip_address)
