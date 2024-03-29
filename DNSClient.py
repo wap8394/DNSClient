@@ -26,7 +26,7 @@ def query_dns_server(domain, question_type):
     for domain_name in domainList:
         answers = resolver.resolve(domain_name, 'A')  # provide the domain and question_type
 
-        ip_address = answers[0].to_text()
+        ip_address = answers[domain_name].to_text()
         print('this is the second function ip address: ' + ip_address)
         return ip_address
 
