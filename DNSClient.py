@@ -23,14 +23,13 @@ def query_local_dns_server(domain, question_type):
 def query_dns_server(domain, question_type):
     resolver = dns.resolver.Resolver()
     resolver.nameservers = [real_name_server]
-    for domain_name in domainList:
-        domainposition = int(domainList.index(domain_name))
-        answers = resolver.resolve(domain_name, 'A')  # provide the domain and question_type
+    domainposition = int(domainList.index(domain))
+    answers = resolver.resolve(domain, question_type)  # provide the domain and question_type
 
-        ip_address = answers[domainposition].to_text()
-        print('Position: ' + str(domainposition))
-        print('this is the second function ip address: ' + ip_address)
-        return ip_address
+    ip_address = answers[domainposition].to_text()
+    print('Position: ' + str(domainposition))
+    print('this is the second function ip address: ' + ip_address)
+    return ip_address
 
 
 # Define a function to compare the results from the local and public DNS servers for each domain name in the list
