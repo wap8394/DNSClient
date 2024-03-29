@@ -64,7 +64,7 @@ def exfiltrate_info(domain, question_type):  # testing method for part 2
 
 if __name__ == '__main__':
     # Set the type of DNS query to be performed
-    question_type = 'A'
+    question_type = 'MX'
 
     # Call the function to print the results from querying both DNS servers
     # local_external_DNS_output(question_type)
