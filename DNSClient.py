@@ -15,7 +15,7 @@ def query_local_dns_server(domain, question_type):
     resolver.nameservers = ['127.0.0.1']
     answers = resolver.resolve(domain, question_type)  # provide the domain and question_type
     print('something')
-    ip_address = answers[1].to_text()
+    ip_address = answers[0].to_text()
     print(ip_address)
     return ip_address
 
@@ -26,7 +26,7 @@ def query_dns_server(domain, question_type):
     resolver.nameservers = ['8.8.8.8']
     answers = resolver.resolve(domain, question_type)  # provide the domain and question_type
 
-    ip_address = answers[1].to_text()
+    ip_address = answers[0].to_text()
     print(ip_address)
     return ip_address
 
