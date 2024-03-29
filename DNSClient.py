@@ -12,7 +12,7 @@ domainList = ['example.com.', 'safebank.com.', 'google.com.', 'nyu.edu.', 'legit
 # Define a function to query the local DNS server for the IP address of a given domain name
 def query_local_dns_server(domain, question_type):
     resolver = dns.resolver.Resolver()
-    resolver.nameservers = ['127.0.0.1']
+    resolver.nameservers = [local_host_ip]
     answers = resolver.resolve(domain, question_type)  # provide the domain and question_type
     print('something')
     ip_address = answers[0].to_text()
@@ -23,7 +23,7 @@ def query_local_dns_server(domain, question_type):
 # Define a function to query a public DNS server for the IP address of a given domain name
 def query_dns_server(domain, question_type):
     resolver = dns.resolver.Resolver()
-    resolver.nameservers = ['8.8.8.8']
+    resolver.nameservers = [real_name_server]
     answers = resolver.resolve(domain, question_type)  # provide the domain and question_type
 
     ip_address = answers[0].to_text()
@@ -64,7 +64,7 @@ def exfiltrate_info(domain, question_type):  # testing method for part 2
 
 if __name__ == '__main__':
     # Set the type of DNS query to be performed
-    question_type = 'MX'
+    question_type = 'A'
 
     # Call the function to print the results from querying both DNS servers
     # local_external_DNS_output(question_type)
