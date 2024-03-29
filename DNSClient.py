@@ -31,7 +31,7 @@ def query_dns_server(domain, question_type):
     print('this is the second function ip address: ' + ip_address)
     return ip_address
 
-
+"""
 # Define a function to compare the results from the local and public DNS servers for each domain name in the list
 def compare_dns_servers(domainList, question_type):
     resolver = dns.resolver.Resolver()
@@ -42,7 +42,7 @@ def compare_dns_servers(domainList, question_type):
         if local_ip_address != public_ip_address:
             return False
     return True
-
+"""
 
 # Define a function to print the results from querying both the local and public DNS servers for each domain name in the domainList
 def local_external_DNS_output(question_type):
