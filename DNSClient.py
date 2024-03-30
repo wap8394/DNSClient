@@ -13,7 +13,7 @@ domainList = ['example.com.', 'safebank.com.', 'google.com.', 'nyu.edu.', 'legit
 def query_local_dns_server(domain, question_type):
     resolver = dns.resolver.Resolver()
     resolver.nameservers = [local_host_ip]
-    answers = resolver.resolve(domain, question_type)  # provide the domain and question_type
+    answers = resolver.query(domain, question_type)  # provide the domain and question_type
 
     ip_address = answers[0].to_text()
     print('the ip address is ' + ip_address)
@@ -25,7 +25,7 @@ def query_dns_server(domain, question_type):
     resolver = dns.resolver.Resolver()
     resolver.nameservers = [real_name_server]
     domainposition = int(domainList.index(domain))
-    answers = resolver.resolve(domain, question_type)  # provide the domain and question_type
+    answers = resolver.query(domain, question_type)  # provide the domain and question_type
 
     ip_address = answers[domainposition].to_text()
     print('Position: ' + str(domainposition))
@@ -39,7 +39,7 @@ def compare_dns_servers(domainList, question_type):
     for domain_name in domainList:
         local_ip_address = resolver.query(domain_name, question_type)
         public_ip_address = resolver.query(domain_name, question_type)
-        print('The public ip address is ' + public_ip_address + ' and the local ip address is ' + local_ip_address)
+        print('The public ip address is ' + str(public_ip_address) + ' and the local ip address is ' + str(local_ip_address))
         if local_ip_address != public_ip_address:
             return False
     return True
@@ -50,13 +50,13 @@ def local_external_DNS_output(question_type):
     print("Local DNS Server")
     resolver = dns.resolver.Resolver()
     for domain_name in domainList:
-        ip_address = resolver.resolve(domain_name, question_type)
+        ip_address = resolver.query(domain_name, question_type)
         print(f"The IP address of {domain_name} is {ip_address}")
 
     print("\nPublic DNS Server")
 
     for domain_name in domainList:
-        ip_address = resolver.resolve(domain_name, question_type)
+        ip_address = resolver.query(domain_name, question_type)
         print(f"The IP address of {domain_name} is {ip_address}")
 
 
